@@ -35,16 +35,12 @@ class Transaction(models.Model):
     date = models.DateField()
     title = models.CharField(max_length = 60)
     created_by = models.ForeignKey(Person, on_delete=models.CASCADE, related_name='transaction_creator')
-    comment = models.TextField()
+    comment = models.TextField(null=True)
     debitor = models.ForeignKey(Person, on_delete=models.CASCADE, related_name='transaction_debitor')
     creditor = models.ForeignKey(Person, on_delete=models.CASCADE, related_name='transaction_creditor')
     amount = models.DecimalField(max_digits=6, decimal_places=2)
-    bill = models.ForeignKey(Bill, on_delete=models.CASCADE)
+    bill = models.ForeignKey(Bill, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return(self.title)
 
-admin.site.register(AccountingPeriod)
-admin.site.register(Person)
-admin.site.register(Bill)
-admin.site.register(Transaction)

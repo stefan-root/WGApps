@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <h3>Create Transaction</h3>
+
+    <form action="{% url 'confirm' %}" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <label for="titleField">Title</label>
+            <input placeholder="Title" id="titleField" type="text" name="titleField">
+
+            <label for="createdByField">created by</label>
+            <input id="createdByField" type="text" name="createdByField" value="{{ created_by_email }}" disabled>
+
+            <label for="dateField">Date</label>
+            <input id="dateField" name="dateField" type="date" value="{{ today }}">
+
+            <label for="commentField">Comment</label>
+            <textarea placeholder="Details..." id="commentField" name="commentField"></textarea>
+
+            <label for="amountField">Amount</label>
+            <input placeholder="00,00" id="amountField" name="amountField" type="number" step="0.01">
+
+            <label for="debitorField">Debitor</label>
+            <select id="debitorField" name="debitorField">
+                {% for person in persons %}
+                    <option value="{{person.user.id}}">{{person.user.first_name}} {{person.user.last_name}}</option>
+                {% endfor %}
+            </select>
+
+            <label for="creditorField">Creditor</label>
+            <select id="creditorField" name="creditorField">
+                {% for person in persons %}
+                    <option value="{{person.user.id}}">{{person.user.first_name}} {{person.user.last_name}}</option>
+                {% endfor %}
+            </select>
+
+            <input class="button-primary" value="Create" type="submit">
+        </fieldset>
+    </form>
+
+
+{% endblock %}
