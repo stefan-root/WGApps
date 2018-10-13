@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <h3>Transaction</h3>
+
+    <form action="{% url 'confirm' %}" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <label for="titleField">Title</label>
+            <input placeholder="Title" id="titleField" type="text" name="titleField">
+
+            <label for="dateField">Date</label>
+            <input id="dateField" name="dateField" type="date" value="{{ today }}">
+
+            <label for="commentField">Comment</label>
+            <textarea placeholder="Details..." id="commentField" name="commentField"></textarea>
+
+            <label for="amountField">Amount</label>
+            <input placeholder="00,00" id="amountField" name="amountField" type="number" step="0.01">
+
+            <input class="button-primary" value="Create" type="submit">
+        </fieldset>
+    </form>
+  
+
+{% endblock %}
