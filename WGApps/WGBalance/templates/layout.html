@@ -7,12 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
     {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'WGBalance/normalize.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'WGBalance/milligram.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'WGBalance/WGApps.css' %}">
 </head>
 <body>
-    <h1>WGBalance</h1>
-    {% block content %}
-    {% endblock %}
-    <a href="/admin"> Admin Login</a>
+    <div class="center">
+        <div class="header">
+            <img src="{% static 'WG_Logo.png' %}" alt="WG Logo">
+            <h1>WGBalance</h1>
+        </div>
+        {% block menu %}
+        {% endblock %}
+        <a class="button button-outline"  href="/admin">Admin Access</a>
+        {% block content %}
+        {% endblock %}
+    </div>
 </body>
 </html>

@@ -1,5 +1,11 @@
 {% extends 'layout.html' %}
 
+{% block menu %}
+
+    <a class="button" href="/WGBalance/view_transactions">My Transactions</a>
+
+{% endblock %}
+
 {% block content %}
 
     <h3>Create Transaction</h3>
@@ -9,9 +15,6 @@
         <fieldset>
             <label for="titleField">Title</label>
             <input placeholder="Title" id="titleField" type="text" name="titleField">
-
-            <label for="createdByField">created by</label>
-            <input id="createdByField" type="text" name="createdByField" value="{{ created_by_email }}" disabled>
 
             <label for="dateField">Date</label>
             <input id="dateField" name="dateField" type="date" value="{{ today }}">

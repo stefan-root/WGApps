@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block menu %}
+
+    <a class="button" href="/WGBalance/view_transactions">My Transactions</a>
+    <a class="button" href="/WGBalance/create_transaction">New Transcation</a>
+
+{% endblock %}
+
+{% block content %}
+
+    <h4>{{ transaction.title }}</h4>
+    <h6>{{ transaction.date }}</h6>
+    <label for="created_by">created by</label>
+    <p id="created_by">{{ transaction.created_by }}</p>
+    <label for="debitorField">Debitor</label>
+    <p id="debitorField">{{ transaction.debitor }}</p>
+    <label for="creditorField">Creditor</label>
+    <p id="creditorField">{{ transaction.creditor }}</p>
+    <label for="amountField">Amount</label>
+    <p id="amountField">{{ transaction.amount }}</p>
+    <label for="commentField">Comment</label>
+    <blockquote id="commentField">
+        <p><em>{{ transaction.comment }}</em></p>
+    </blockquote>
+
+{% endblock %}

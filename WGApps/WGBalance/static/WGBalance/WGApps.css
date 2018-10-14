@@ -1,0 +1,14 @@
+.center {
+    max-width: 500px;
+    margin: auto;
+}
+
+.header img {
+    float: left;
+    width: 5rem;
+    height: 5rem;
+  }
+  
+  .header h1 {
+    position: relative;
+  }

@@ -21,8 +21,8 @@ def create_transaction(request):
 @login_required(login_url='/WGBalance/accounts/login/')
 def view_transactions(request):
     person = Person.objects.get(user__id=request.user.id)
-    debitor_transactions = Transaction.objects.filter(debitor=person)
-    creditor_transactions = Transaction.objects.filter(creditor=person)
+    debitor_transactions = Transaction.objects.filter(debitor=person).order_by('-date')
+    creditor_transactions = Transaction.objects.filter(creditor=person).order_by('-date')
     context = {
         'debitor_transactions': debitor_transactions,
         'creditor_transactions': creditor_transactions,
@@ -51,3 +51,11 @@ def confirm(request):
         'title': title
     }
     return render(request, 'WGBalance/confirmation.html', context)
+
+@login_required(login_url='/WGBalance/accounts/login/')
+def view_transaction(request, transaction_id):
+    transaction = Transaction.objects.get(id=transaction_id)
+    context = {
+        'transaction': transaction
+    }
+    return render(request, 'WGBalance/view_transaction.html', context)

@@ -1,5 +1,11 @@
 {% extends 'layout.html' %}
 
+{% block menu %}
+
+    <a class="button" href="/WGBalance/create_transaction">New Transcation</a>
+
+{% endblock %}
+
 {% block content %}
 
     <h3>debitor transactions</h3>
@@ -15,7 +21,7 @@
             <tbody>
                 {% for transaction in debitor_transactions %}   
                     <tr>
-                        <td>{{transaction.title}}</td>
+                        <td><a href="/WGBalance/view_transaction/{{transaction.id}}">{{transaction.title}}</a></td>
                         <td>{{transaction.date}}</td>
                         <td>{{transaction.creditor}}</td>
                         <td>{{transaction.amount}}</td>
